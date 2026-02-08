@@ -1,16 +1,93 @@
-# React + Vite
+# 🌐 Web3 Kolkata
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-19.2-61dafb?logo=react)
+![Vite](https://img.shields.io/badge/Vite-7.2-646cff?logo=vite)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-Currently, two official plugins are available:
+**Official website for Web3 Kolkata** — An open community of developers, students, and working professionals building the decentralized future in the City of Joy.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+- 🎨 **Modern Dark Theme** — Premium blockchain-inspired UI with glassmorphism effects
+- 🌌 **Interactive Hero** — Animated canvas with floating nodes and connections
+- 📅 **Events Showcase** — Display upcoming meetups, workshops, and hackathons
+- 🔗 **Technologies Section** — Highlighting Ethereum, Solana, and Web3 ecosystems
+- 👥 **Community Hub** — Connect with 500+ members and growing
+- 📱 **Fully Responsive** — Optimized for all devices
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Quick Start
 
-## Expanding the ESLint configuration
+```bash
+# Clone the repository
+git clone https://github.com/SunnyMondal53778/web3kolkata.git
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Navigate to project
+cd web3kolkata
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|------------|---------|
+| **React 19** | UI Framework |
+| **Vite 7** | Build Tool & Dev Server |
+| **React Router** | Client-side Routing |
+| **Vanilla CSS** | Custom Styling |
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── About.jsx        # About section & mission
+│   ├── Community.jsx    # Community links & join options
+│   ├── Events.jsx       # Upcoming events display
+│   ├── Footer.jsx       # Site footer
+│   ├── Hero.jsx         # Animated hero section
+│   ├── Navbar.jsx       # Navigation bar
+│   └── Technologies.jsx # Web3 tech showcase
+├── pages/
+│   └── Home.jsx         # Main landing page
+├── assets/              # Static assets
+└── App.jsx              # Root component
+```
+
+## 🎯 What We Do
+
+- 📆 **Monthly Meetups** — Regular community gatherings
+- 💡 **Workshops & Bootcamps** — Hands-on blockchain learning
+- 🏆 **Hackathons** — Build projects with real prizes
+- 🤝 **Networking** — Connect with Web3 enthusiasts
+
+## 📦 Build for Production
+
+```bash
+npm run build
+```
+
+The optimized build will be in the `dist/` folder.
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## 📄 License
+
+MIT License — see [LICENSE](LICENSE) for details.
+
+---
+
+<p align="center">
+  <strong>Built with ❤️ in Kolkata</strong><br>
+  <a href="https://twitter.com/web3kolkata">Twitter</a> •
+  <a href="https://t.me/web3kolkata">Telegram</a> •
+  <a href="https://discord.gg/web3kolkata">Discord</a>
+</p>
