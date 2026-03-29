@@ -17,24 +17,21 @@ function Hero() {
 
         const createNodes = () => {
             nodes = []
-            const nodeCount = Math.floor((canvas.width * canvas.height) / 15000)
+            const nodeCount = Math.floor((canvas.width * canvas.height) / 11000)
             for (let i = 0; i < nodeCount; i++) {
                 nodes.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
-                    vx: (Math.random() - 0.5) * 0.5,
-                    vy: (Math.random() - 0.5) * 0.5,
-                    radius: Math.random() * 2 + 1
+                    vx: (Math.random() - 0.5) * 0.35,
+                    vy: (Math.random() - 0.5) * 0.35,
+                    radius: Math.random() * 1.8 + 0.4,
+                    brightness: Math.random() * 0.4 + 0.2
                 })
             }
         }
 
         const drawNodes = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-            // Draw connections
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)'
-            ctx.lineWidth = 1
 
             for (let i = 0; i < nodes.length; i++) {
                 for (let j = i + 1; j < nodes.length; j++) {
@@ -43,6 +40,9 @@ function Hero() {
                     const distance = Math.sqrt(dx * dx + dy * dy)
 
                     if (distance < 150) {
+                        const opacity = (1 - distance / 150) * 0.10
+                        ctx.strokeStyle = `rgba(200, 200, 200, ${opacity})`
+                        ctx.lineWidth = 0.6
                         ctx.beginPath()
                         ctx.moveTo(nodes[i].x, nodes[i].y)
                         ctx.lineTo(nodes[j].x, nodes[j].y)
@@ -51,18 +51,24 @@ function Hero() {
                 }
             }
 
-            // Draw and update nodes
             nodes.forEach(node => {
+                // outer glow
+                const grd = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius * 4)
+                grd.addColorStop(0, `rgba(255, 255, 255, ${node.brightness * 0.5})`)
+                grd.addColorStop(1, 'rgba(255, 255, 255, 0)')
                 ctx.beginPath()
-                ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2)
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.3)'
+                ctx.arc(node.x, node.y, node.radius * 4, 0, Math.PI * 2)
+                ctx.fillStyle = grd
                 ctx.fill()
 
-                // Update position
+                // core dot
+                ctx.beginPath()
+                ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2)
+                ctx.fillStyle = `rgba(255, 255, 255, ${node.brightness})`
+                ctx.fill()
+
                 node.x += node.vx
                 node.y += node.vy
-
-                // Bounce off edges
                 if (node.x < 0 || node.x > canvas.width) node.vx *= -1
                 if (node.y < 0 || node.y > canvas.height) node.vy *= -1
             })
@@ -74,14 +80,12 @@ function Hero() {
         createNodes()
         drawNodes()
 
-        window.addEventListener('resize', () => {
-            resizeCanvas()
-            createNodes()
-        })
+        const handleResize = () => { resizeCanvas(); createNodes() }
+        window.addEventListener('resize', handleResize)
 
         return () => {
             cancelAnimationFrame(animationFrameId)
-            window.removeEventListener('resize', resizeCanvas)
+            window.removeEventListener('resize', handleResize)
         }
     }, [])
 
@@ -92,14 +96,19 @@ function Hero() {
             <div className="hero-grid"></div>
 
             <div className="container hero-content">
+                {/* Large logo in hero */}
+                <div className="hero-logo-display">
+                    <img src="/logo.jpg" alt="Web3 Kolkata" className="hero-logo-img" />
+                </div>
+
                 <div className="hero-badge">
                     <span className="pulse-dot"></span>
-                    Open Community
+                    Open Community · Kolkata
                 </div>
 
                 <h1 className="hero-title">
                     <span className="hero-title-line">Web3</span>
-                    <span className="hero-title-line gradient-text">Kolkata</span>
+                    <span className="hero-title-line chrome-text">Kolkata</span>
                 </h1>
 
                 <p className="hero-description">
@@ -130,20 +139,22 @@ function Hero() {
                     </a>
                 </div>
 
-                <div className="hero-stats">
-                    <div className="stat-item">
-                        <span className="stat-value">500+</span>
-                        <span className="stat-label">Community Members</span>
-                    </div>
-                    <div className="stat-divider"></div>
-                    <div className="stat-item">
-                        <span className="stat-value">20+</span>
-                        <span className="stat-label">Events Hosted</span>
-                    </div>
-                    <div className="stat-divider"></div>
-                    <div className="stat-item">
-                        <span className="stat-value">10+</span>
-                        <span className="stat-label">Partner Organizations</span>
+                <div className="hero-stats-wrapper">
+                    <div className="hero-stats">
+                        <div className="stat-item">
+                            <span className="stat-value">500+</span>
+                            <span className="stat-label">Community Members</span>
+                        </div>
+                        <div className="stat-divider"></div>
+                        <div className="stat-item">
+                            <span className="stat-value">20+</span>
+                            <span className="stat-label">Events Hosted</span>
+                        </div>
+                        <div className="stat-divider"></div>
+                        <div className="stat-item">
+                            <span className="stat-value">10+</span>
+                            <span className="stat-label">Partner Organizations</span>
+                        </div>
                     </div>
                 </div>
             </div>
